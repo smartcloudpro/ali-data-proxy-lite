@@ -8,7 +8,8 @@ $ tnpm install midway-dataproxy
 ===
 
 对restfull接口 的更好支持
-主要支持了application/json
+1.主要支持了application/json
+2.angular client支持（ng-proxy)
 
 ## 目录
  - [Why?]()
