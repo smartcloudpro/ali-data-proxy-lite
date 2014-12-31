@@ -1,0 +1,74 @@
+{
+    "title": "public account interface configuration",
+    "version": "1.0.0",
+    "engine": "mockjs",
+    "rulebase": "./interfaceRules/",
+    "status": "online",
+    "interfaces": [ {
+        "name": "我的购物车",
+        "id": "Account.getAllAccounts",
+        "urls": {
+            "online": "http://localhost:8881/services/accounts.json",
+            "contentType":"application/json"
+
+        },
+        "method":"get",
+        "dataType":"json",
+        "contentType":"application/json"
+    },{
+        "name": "我的购物车2",
+        "id": "Account.getAllAccoun",
+        "urls": {
+            "online": "http://localhost:8881/services/accounts.json",
+            "contentType":"application/json"
+
+        },
+        "method":"get",
+        "dataType":"json",
+        "contentType":"application/json"
+    } ,{
+        "name": "主搜索接口",
+        "id": "Search.list",
+        "urls": {
+            "online": "http://api.s.m.taobao.com/search.json"
+        }
+    }, {
+        "name": "热词推荐接口",
+        "id": "Search.suggest",
+        "urls": {
+            "online": "http://suggest.taobao.com/sug"
+        }
+    }, {
+        "name": "导航获取接口",
+        "id": "Search.getNav",
+        "urls": {
+            "online": "http://s.m.taobao.com/client/search.do"
+        }
+    }, {
+        "name": "post测试接口",
+        "id": "Test.post",
+        "urls": {
+            "online": "http://127.0.0.1:3001/post"
+        },
+        "method": "post",
+        "dataType": "text"
+    },{
+        "name": "44444",
+        "id": "Account.update",
+        "urls": {
+            "online": "http://localhost:8880/services/accounts/:id/name/:name"
+        },
+        "method":"put"
+    },{
+        "name": "3",
+        "id": "message.add",
+        "urls": {
+            "online": "http://10.3.30.17:8888/api/v1/message/6b05dd4fc9054dc6a17224d27d034583-11003700"
+        },
+        "method":"post",
+        "contentType":"application/json"
+    } ],
+    "combo": {
+        "getMyData": [ "Cart.getCart", "Search.suggest" ]
+    }
+}

@@ -1,0 +1,34 @@
+{
+  "name": "ali-data-proxy-lite",
+  "description": "midway dataproxy module",
+  "version": "1.1.10",
+  "author": {
+    "name": "drmfly",
+    "email": "drmfly.liw@gmail.com"
+  },
+  "dependencies": {
+    "request": "latest",
+    "mockjs": "0.1.1",
+    "ali-data-mock": "latest",
+    "iconv-lite": "0.2.11",
+    "agentkeepalive": "0.2.2",
+    "hsf": "~1.0.0-beta9",
+    "mysql": "~2.2.0",
+    "traverse": "0.6.6"
+  },
+  "devDependencies": {
+    "mocha": "1.17.1",
+    "jscoverage": "0.3.8",
+    "express": "~4.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.alibaba-inc.com:tb/midway.git"
+  },
+  "maintainers": [
+    {
+      "name": "drmfly",
+      "email": "drmfly.liw@gmail.com"
+    }
+  ]
+}
