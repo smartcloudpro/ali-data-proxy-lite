@@ -2,12 +2,11 @@
 ## Install
 
 ```sh
-$ npm install -g tnpm
-$ tnpm install midway-dataproxy
+$ npm install ali-data-proxy-lite
 ```
 ===
 
-对restfull接口 的更好支持
+对restfull接口的更好支持
 1.主要支持了application/json
 2.angular client支持（ng-proxy)
 
