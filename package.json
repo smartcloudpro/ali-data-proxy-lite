@@ -1,7 +1,7 @@
 {
   "name": "ali-data-proxy-lite",
   "description": "midway dataproxy module",
-  "version": "1.1.10",
+  "version": "1.1.12",
   "author": {
     "name": "drmfly",
     "email": "drmfly.liw@gmail.com"
@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.alibaba-inc.com:tb/midway.git"
+    "url": "https://github.com/chiqcloud/ali-data-proxy-lite"
   },
   "maintainers": [
     {

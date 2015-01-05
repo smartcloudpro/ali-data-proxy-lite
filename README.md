@@ -1,4 +1,4 @@
-# ali-data-proxy-lite 1.1.10 (支持rest, modulet, mtop, hsf, mysql)
+# ali-data-proxy-lite 1.1.12 (支持rest, modulet, mtop, hsf, mysql)
 ## Install
 
 ```sh
@@ -6,9 +6,9 @@ $ npm install ali-data-proxy-lite
 ```
 ===
 
-对restfull接口的更好支持
-1.主要支持了application/json
-2.angular client支持（ng-proxy)
+对restfull接口的更好支持:
+*1.主要支持了application/json
+*2.angular client支持（ng-proxy)
 
 ## 目录
  - [Why?]()
