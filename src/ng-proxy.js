@@ -25,9 +25,9 @@
                             '?': '&'
                         }) + '_version=' + this._opt.version : this.parsePath(Proxy.base + '/' + this._opt.id, query),
                         headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
+                            'Content-Type': 'application/json'
                         },
-                        data: params
+                        data:JSON.stringify(params)
                     }).success(callback).error(errCallback);
                     ;
                 },
