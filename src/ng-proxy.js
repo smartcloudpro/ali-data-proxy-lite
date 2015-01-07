@@ -70,7 +70,7 @@
                 xhr.onerror = function (err) {
                     throw err;
                 };
-                xhr.open("GET", 'http://localhost:3000/model/$interfaces', false);
+                xhr.open("GET", this.base + '/$interfaces', false);
                 return xhr.send(null);
             };
 
