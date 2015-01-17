@@ -49,14 +49,14 @@ $ npm install ali-data-proxy-lite
 1. 不同的开发者对于接口访问代码编写方式统一，含义清晰，降低维护难度。
 2. 框架内部采用工厂+单例模式，实现接口一次配置多次复用。并且开发者可以随意定制组装自己的业务Proxy(依赖注入)。
 3. 可以非常方便地实现线上，日常，预发环境的切换。
-4. 内置[river-mock](http://gitlab.alibaba-inc.com/river/mock/tree/master)等mock引擎，提供mock数据非常方便。
+4. 内置[river-mock](https://gitlab.alibaba-inc.com/river/mock/tree/master)等mock引擎，提供mock数据非常方便。
 5. 使用接口配置文件，对接口的依赖描述做统一的管理，避免散落在各个代码之中。
 6. 支持浏览器端共享Proxy，浏览器端可以使用它做前端数据渲染。整个代理过程对浏览器透明。
-7. 接口配置文件本身是结构化的描述文档，可以使用[river](http://gitlab.alibaba-inc.com/river/spec/tree/master)工具集合，自动生成文档。也可使用它做相关自动化接口测试，使整个开发过程形成一个闭环。
+7. 接口配置文件本身是结构化的描述文档，可以使用[river](https://gitlab.alibaba-inc.com/river/spec/tree/master)工具集合，自动生成文档。也可使用它做相关自动化接口测试，使整个开发过程形成一个闭环。
 
 ### DataProxy工作原理图及相关开发过程图览
 ---
-![](http://img2.tbcdn.cn/L1/461/1/12bb633225499cdbba656335c3ec845dec7a92b4)
+![](https://img2.tbcdn.cn/L1/461/1/12bb633225499cdbba656335c3ec845dec7a92b4)
 
 ## 使用前必读
 ---
@@ -83,7 +83,7 @@ $ npm install ali-data-proxy-lite
         "name": "主搜索接口",
         "id": "Search.getItems",
         "urls": {
-            "prod": "http://s.m.taobao.com/client/search.do"
+            "prod": "https://s.m.taobao.com/client/search.do"
         }
     } ]
 }
@@ -134,19 +134,19 @@ searchProxy.searchItems( { keyword: 'iphone6' } )
         "name": "主搜索搜索接口",
         "id": "Search.list",
         "urls": {
-            "prod": "http://s.m.taobao.com/search.do"
+            "prod": "https://s.m.taobao.com/search.do"
         }
     }, {
         "name": "热词推荐接口",
         "id": "Search.suggest",
         "urls": {
-            "prod": "http://suggest.taobao.com/sug"
+            "prod": "https://suggest.taobao.com/sug"
         }
     }, {
         "name": "导航获取接口",
         "id": "Search.getNav",
         "urls": {
-            "prod": "http://s.m.taobao.com/client/search.do"
+            "prod": "https://s.m.taobao.com/client/search.do"
         }
     } ]
 }
@@ -196,14 +196,14 @@ proxy.suggest( { q: '女' } )
         "id": "Session.getUser",
         "type": "http",
         "urls": {
-            "prod": "http://taobao.com/getUser.do"
+            "prod": "https://taobao.com/getUser.do"
         }
     }, {
         "name": "订单获取接口",
         "id": "Order.getOrder",
         "type": "http",
         "urls": {
-            "prod": "http://taobao.com/getOrder"
+            "prod": "https://taobao.com/getOrder"
         }
     } ]
 }
@@ -252,16 +252,16 @@ proxy.getUser( { sid: 'fdkaldjfgsakls0322yf8' } )
         "id": "Search.getItems",
         "ruleFile": "Search.getItems.rule.json",  <-- 指定数据mock规则文件名，如果不配置，则将默认设置为 id + '.rule.json'
         "urls": {
-            "prod": "http://s.m.taobao.com/client/search.do",
-            "prep": "http://s.m.taobao.com/client/search.do",
-            "daily": "http://daily.taobao.net/client/search.do"
+            "prod": "https://s.m.taobao.com/client/search.do",
+            "prep": "https://s.m.taobao.com/client/search.do",
+            "daily": "https://daily.taobao.net/client/search.do"
         },
         "status": "mock"                            <-- 启用mock状态，覆盖全局status
     } ]
 }
 ```
 
-* 第二步 添加接口对应的规则文件到ruleBase(interfaceRules)指定的文件夹。mock数据规则请参考[river-mock](http://gitlab.alibaba-inc.com/river/mock/tree/master)和[mockjs](http://mockjs.com)。启动程序后，DataProxy即返回相关mock数据。
+* 第二步 添加接口对应的规则文件到ruleBase(interfaceRules)指定的文件夹。mock数据规则请参考[river-mock](https://gitlab.alibaba-inc.com/river/mock/tree/master)和[mockjs](https://mockjs.com)。启动程序后，DataProxy即返回相关mock数据。
 
 ### 用例五 使用DataProxy拦截请求
 
@@ -392,7 +392,7 @@ UserService.append( user )
 ```
 
 * `补充说明`：
- - 1. 使用DataProxy调用hsf服务时，其所需要的参数类型及结构由hsf服务提供者决定。当服务提供者使用java发布service时，其参数要求有确定的数据类型，关于java和js之间的数据类型转换，请参考[node-hsf之Java 对象与 Node 的对应关系以及调用方法章节](http://gitlab.alibaba-inc.com/node/node-hsf/tree/master)。推荐使用[js-to-java](https://github.com/node-modules/js-to-java)来辅助编写Java对象。关于hsf的相关说明请参考[HSF项目说明](http://confluence.taobao.ali.com/pages/viewpage.action?pageId=819280)。此外，您可以使用[HSF服务治理](http://ops.jm.taobao.net/service-manager/service_search/index.htm?envType=daily)查询相关服务接口，并且使用[Nexus](http://mvnrepo.taobao.ali.com/nexus/index.html#welcome)查询并获得相关jar包。
+ - 1. 使用DataProxy调用hsf服务时，其所需要的参数类型及结构由hsf服务提供者决定。当服务提供者使用java发布service时，其参数要求有确定的数据类型，关于java和js之间的数据类型转换，请参考[node-hsf之Java 对象与 Node 的对应关系以及调用方法章节](https://gitlab.alibaba-inc.com/node/node-hsf/tree/master)。推荐使用[js-to-java](https://github.com/node-modules/js-to-java)来辅助编写Java对象。关于hsf的相关说明请参考[HSF项目说明](https://confluence.taobao.ali.com/pages/viewpage.action?pageId=819280)。此外，您可以使用[HSF服务治理](https://ops.jm.taobao.net/service-manager/service_search/index.htm?envType=daily)查询相关服务接口，并且使用[Nexus](https://mvnrepo.taobao.ali.com/nexus/index.html#welcome)查询并获得相关jar包。
  - 2. hsf 的mock方法与其他类型代理无区别，且可以参照例六直接在浏览器端调用hsf service
 
 ### 用例九 使用DataProxy代理Mtop接口
@@ -506,7 +506,7 @@ userService
     },
     "modulet": {
         "urls": {
-            prod: "http://i.daily.taobao.net/module.do"
+            prod: "https://i.daily.taobao.net/module.do"
         }
     },
     "interfaces":[ {
@@ -565,9 +565,9 @@ iTaobao.getMyFavourite( {uid: 'xxxx'} )
     /* mtop 接口代理配置 */
     "mtop": {                                // mtop接口访问配置，不需要时可以不配置
         "urls": {                            // [选填][object] mtop api地址，默认为说明示例
-            "prod": "http://api.m.taobao.com/rest/h5ApiUpdate.do",
-            "prep": "http://api.wapa.taobao.com/rest/h5ApiUpdate.do",
-            "daily": "http://api.waptest.taobao.com/rest/h5ApiUpdate.do"
+            "prod": "https://api.m.taobao.com/rest/h5ApiUpdate.do",
+            "prep": "https://api.wapa.taobao.com/rest/h5ApiUpdate.do",
+            "daily": "https://api.waptest.taobao.com/rest/h5ApiUpdate.do"
         },
         "tokenName": "_m_h5_tk",             // [选填][string] mtop 协议使用的token在cookie中的字段名，默认为_m_h5_tk
         "appKeys": {                         // mtop 协议使用的appKey，不同环境下使用的appKey可能不同
@@ -579,9 +579,9 @@ iTaobao.getMyFavourite( {uid: 'xxxx'} )
     /* modulet 接口代理配置 */
     "modulet": {
         "urls": {                            // [选填][object] modulet api地址。
-            "prod": "http://i.taobao.com/modulet.do",
-            "prep": "http://i.taobao.com/modulet.do",
-            "daily": "http://i.taobao.com/modulet.do"
+            "prod": "https://i.taobao.com/modulet.do",
+            "prep": "https://i.taobao.com/modulet.do",
+            "daily": "https://i.taobao.com/modulet.do"
         }
     },
     /* hsf 接口代理配置 */
@@ -636,9 +636,9 @@ iTaobao.getMyFavourite( {uid: 'xxxx'} )
     "type": "http",                      // [必填][string] 接口类型，取值可以是http或者hsf，使用http接口时其值必须为http
     "id": "cart.getCart",                // [必填][string] 接口ID，必须由英文单词+点号组成
     "urls": {                            // [如果ruleFile不存在, 则必须有一个地址存在][object] 可供切换的url集合
-      "prod": "http://url1",             // 线上地址
-      "prep": "http://url2",             // 预发地址
-      "daily": "http://url3",            // 日常地址
+      "prod": "https://url1",             // 线上地址
+      "prep": "https://url2",             // 预发地址
+      "daily": "https://url3",            // 日常地址
     },
     "ruleFile": "cart.getCart.rule.json",// [选填][string] 对应的数据规则文件，当Proxy Mock状态开启时回返回mock数据
                                          // 不配置时默认为id + ".rule.json"。
@@ -834,7 +834,7 @@ DataProxy.create( {
         "name": "热词推荐接口",
         "id": "Search.suggest",
         "urls": {
-            "prod": "http://suggest.taobao.com/sug"
+            "prod": "https://suggest.taobao.com/sug"
         },
         status: 'prod'
     }
@@ -887,7 +887,7 @@ rule.json文件定义一个接口具体的请求和应答数据的格式规范�
 
 ### rule.json文件内容样式
 
-内容样式取决于DataProxy采用何种mock引擎，推荐使用阿里集团统一的River-mock。关于River规定的接口写法请参考[River-spec](http://gitlab.alibaba-inc.com/river/spec/tree/master)
+内容样式取决于DataProxy采用何种mock引擎，推荐使用阿里集团统一的River-mock。关于River规定的接口写法请参考[River-spec](https://gitlab.alibaba-inc.com/river/spec/tree/master)
 
 * 样例
 
@@ -897,7 +897,7 @@ rule.json文件定义一个接口具体的请求和应答数据的格式规范�
         "name": "basic"
     },
     "request": {
-        "$schema": "http://json-schema.org/draft-04/schema#",
+        "$schema": "https://json-schema.org/draft-04/schema#",
         "type": "object",
         "required": ["search"],
         "properties": {
@@ -907,7 +907,7 @@ rule.json文件定义一个接口具体的请求和应答数据的格式规范�
         }
     },
     "response": {
-        "$schema": "http://json-schema.org/draft-04/schema#",
+        "$schema": "https://json-schema.org/draft-04/schema#",
         "type": "object",
         "required": ["status"],
         "properties": {
