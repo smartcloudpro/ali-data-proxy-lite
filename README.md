@@ -9,6 +9,7 @@ $ npm install ali-data-proxy-lite
 对restfull接口的更好支持:
 *1.主要支持了application/json
 *2.angular client支持（ng-proxy)
+修正服务端代理post 提交中文 Unexpected end of input 错误
 
 ## 目录
  - [Why?]()
